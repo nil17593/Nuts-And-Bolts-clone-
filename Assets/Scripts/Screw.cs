@@ -25,6 +25,7 @@ public class Screw : MonoBehaviour
         {
             HingeJoint2D joint = gameObject.AddComponent<HingeJoint2D>();
             joint.connectedBody = plates[i].GetComponent<Rigidbody2D>();
+            joint.autoConfigureConnectedAnchor = true;
         }
 
         HingeJoint2D[] hingeJoint2Ds = gameObject.GetComponents<HingeJoint2D>();
@@ -73,6 +74,7 @@ public class Screw : MonoBehaviour
         {
             HingeJoint2D joint = gameObject.AddComponent<HingeJoint2D>();
             joint.connectedBody = plates[i].GetComponent<Rigidbody2D>();
+            joint.autoConfigureConnectedAnchor = true;
         }
         HingeJoint2D[] hingeJoint2D = gameObject.GetComponents<HingeJoint2D>();
         hingeJoint2s.AddRange(hingeJoint2D);

@@ -20,11 +20,12 @@ public class ScrewController : MonoBehaviour
                 {
                     Debug.Log(hit.collider.name);
                     GameObject tappedObject = hit.collider.gameObject;
-
+                    
                     if (tappedObject.GetComponent<Screw>()!=null)
                     {
                         selectedObject = tappedObject;
                         originalPosition = tappedObject.transform.position;
+                        selectedObject.transform.position += new Vector3(0, .5f, 0);
                     }
                 }
             }
@@ -46,6 +47,14 @@ public class ScrewController : MonoBehaviour
                         //joint2D.connectedBody = null;
                         //}
                         selectedObject.GetComponent<Screw>().ChangeScrewPosition();
+                    }
+                    else
+                    {
+                        if (selectedObject != null)
+                        {
+                            selectedObject.transform.position = originalPosition;
+                            selectedObject = null;
+                        }
                     }
                     selectedObject = null;
                 }
