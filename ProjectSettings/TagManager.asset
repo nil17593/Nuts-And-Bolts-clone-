@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Screw
   - ScrewBase
+  - Plate
   layers:
   - Default
   - TransparentFX

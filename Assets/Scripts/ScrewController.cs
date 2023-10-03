@@ -21,7 +21,7 @@ public class ScrewController : MonoBehaviour
                     Debug.Log(hit.collider.name);
                     GameObject tappedObject = hit.collider.gameObject;
 
-                    if (tappedObject.CompareTag("Screw"))
+                    if (tappedObject.GetComponent<Screw>()!=null)
                     {
                         selectedObject = tappedObject;
                         originalPosition = tappedObject.transform.position;
@@ -39,14 +39,15 @@ public class ScrewController : MonoBehaviour
                     if (tappedObject2.CompareTag("ScrewBase"))
                     {
                         selectedObject.transform.position = tappedObject2.transform.position;
-                        HingeJoint2D[] hingeJoint2Ds;
-                        hingeJoint2Ds = selectedObject.GetComponents<HingeJoint2D>();
-                        foreach (HingeJoint2D joint2D in hingeJoint2Ds)
-                        {
-                            joint2D.connectedBody = null;
-                        }
-                        selectedObject = null;
+                        //HingeJoint2D[] hingeJoint2Ds;
+                        //hingeJoint2Ds = selectedObject.GetComponents<HingeJoint2D>();
+                        //foreach (HingeJoint2D joint2D in hingeJoint2Ds)
+                        //{
+                        //joint2D.connectedBody = null;
+                        //}
+                        selectedObject.GetComponent<Screw>().ChangeScrewPosition();
                     }
+                    selectedObject = null;
                 }
 
             }
