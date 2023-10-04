@@ -27,31 +27,28 @@ public class Screw : MonoBehaviour
             joint.connectedBody = plates[i].GetComponent<Rigidbody2D>();
             joint.autoConfigureConnectedAnchor = true;
         }
-
-        HingeJoint2D[] hingeJoint2Ds = gameObject.GetComponents<HingeJoint2D>();
-        hingeJoint2s.AddRange(hingeJoint2Ds);
-        //for (int i = 0; i < hingeJoint2s.Count; i++)
-        //{
-        //    Rigidbody2D rigidbody2D = plates[i].GetComponent<Rigidbody2D>();
-        //    hingeJoint2s[i].connectedBody = rigidbody2D;
-        //}
     }
 
     public void ChangeScrewPosition()
     {
-        List<int> indicesToRemove = new List<int>();
-        for (int i = 0; i < hingeJoint2s.Count; i++)
+        HingeJoint2D[] hingeJoint2D = gameObject.GetComponents<HingeJoint2D>();
+        foreach(HingeJoint2D hingeJoint2D1 in hingeJoint2D)
         {
-            hingeJoint2s[i].connectedBody = null;
-            indicesToRemove.Add(i);
+            Destroy(hingeJoint2D1);
         }
+        //List<int> indicesToRemove = new List<int>();
+        //for (int i = 0; i < hingeJoint2s.Count; i++)
+        //{
+        //    hingeJoint2s[i].connectedBody = null;
+        //    indicesToRemove.Add(i);
+        //}
 
-        for (int i = indicesToRemove.Count - 1; i >= 0; i--)
-        {
-            Destroy(hingeJoint2s[indicesToRemove[i]]);
-            hingeJoint2s.RemoveAt(indicesToRemove[i]); 
-        }
-        hingeJoint2s.Clear();
+        //for (int i = indicesToRemove.Count - 1; i >= 0; i--)
+        //{
+        //    Destroy(hingeJoint2s[indicesToRemove[i]]);
+        //    hingeJoint2s.RemoveAt(indicesToRemove[i]); 
+        //}
+        //hingeJoint2s.Clear();
          
 
         Collider2D[] nearbyPlates = Physics2D.OverlapCircleAll(transform.position, detectionRadius);
@@ -76,13 +73,5 @@ public class Screw : MonoBehaviour
             joint.connectedBody = plates[i].GetComponent<Rigidbody2D>();
             joint.autoConfigureConnectedAnchor = true;
         }
-        HingeJoint2D[] hingeJoint2D = gameObject.GetComponents<HingeJoint2D>();
-        hingeJoint2s.AddRange(hingeJoint2D);
-
-        //for (int i = 0; i < hingeJoint2s.Count; i++)
-        //{
-        //    Rigidbody2D rigidbody2D = plates[i].GetComponent<Rigidbody2D>();
-        //    hingeJoint2s[i].connectedBody = rigidbody2D;
-        //}
     }
 }

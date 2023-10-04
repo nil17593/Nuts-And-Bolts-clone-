@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea58c578bcda9d40b637629f9c7a0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 0.8
+  detectionRadius: 0.3
   hingeJoint2s: []
 --- !u!58 &532235784
 CircleCollider2D:
@@ -1020,7 +1020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea58c578bcda9d40b637629f9c7a0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 0.8
+  detectionRadius: 0.3
   hingeJoint2s: []
 --- !u!58 &823453761
 CircleCollider2D:
@@ -1272,7 +1272,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb78f9012ad92214da12b2f747c58559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screws: []
   selectedObject: {fileID: 0}
 --- !u!114 &902956764
 MonoBehaviour:
@@ -1594,7 +1593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea58c578bcda9d40b637629f9c7a0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 0.8
+  detectionRadius: 0.3
   hingeJoint2s: []
 --- !u!1 &1214668770
 GameObject:
@@ -1831,8 +1830,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1366559903}
   m_LocalRotation: {x: -0, y: -0, z: 0.9406227, w: 0.33945382}
-  m_LocalPosition: {x: 0.21, y: 0.84, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0.21, y: 0.86, z: 0}
+  m_LocalScale: {x: 0.56718004, y: 0.4742, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2476,7 +2475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea58c578bcda9d40b637629f9c7a0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 0.8
+  detectionRadius: 0.3
   hingeJoint2s: []
 --- !u!58 &1974679040
 CircleCollider2D:
