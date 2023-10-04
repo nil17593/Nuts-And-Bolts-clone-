@@ -18,6 +18,15 @@ public class UIController : Singleton<UIController>
     {
         //levelWinPanel.transform.DOMove(Vector3.zero, 1f);
         levelWinPanel.SetActive(true);
+        int i = PlayerPrefs.GetInt("CurrentLevel");
+        i += 1;
+        PlayerPrefs.SetInt("CurrentLevel", i);
+    }
+
+    public void OnNextLevelButtonPressed()
+    {
+        int i = PlayerPrefs.GetInt("CurrentLevel");
+        SceneManager.LoadScene(i);
     }
 
     public void OnRestartButtonClick()
