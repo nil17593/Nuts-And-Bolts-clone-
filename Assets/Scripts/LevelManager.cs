@@ -12,12 +12,16 @@ public class LevelManager : Singleton<LevelManager>
         currentPlateCount.AddRange(currentPlates);
     }
 
+    //IEnumerator CheckForLevelWinCoroutine()
+    //{
+
+    //}
+
     public void CheckForLevelWin()
     {
         if (currentPlateCount.Count <= 0)
         {
             UIController.Instance.ActivateLevelWin();
-            Debug.Log("YOU WIN");
         }
     }
 }

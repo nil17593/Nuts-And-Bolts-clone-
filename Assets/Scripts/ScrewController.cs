@@ -9,6 +9,9 @@ public class ScrewController : MonoBehaviour
 
     private void Update()
     {
+        if (LevelManager.Instance.numberOfMoves <= 0)
+            return;
+
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

@@ -36,21 +36,7 @@ public class Screw : MonoBehaviour
         {
             Destroy(hingeJoint2D1);
         }
-        //List<int> indicesToRemove = new List<int>();
-        //for (int i = 0; i < hingeJoint2s.Count; i++)
-        //{
-        //    hingeJoint2s[i].connectedBody = null;
-        //    indicesToRemove.Add(i);
-        //}
-
-        //for (int i = indicesToRemove.Count - 1; i >= 0; i--)
-        //{
-        //    Destroy(hingeJoint2s[indicesToRemove[i]]);
-        //    hingeJoint2s.RemoveAt(indicesToRemove[i]); 
-        //}
-        //hingeJoint2s.Clear();
          
-
         Collider2D[] nearbyPlates = Physics2D.OverlapCircleAll(transform.position, detectionRadius);
         List<Collider2D> plates = new List<Collider2D>();
 
@@ -63,6 +49,7 @@ public class Screw : MonoBehaviour
             }
         }
 
+        SoundManager.Instance.Play(Sounds.ScrewDown);
 
         if (plates.Count <= 0)
             return;
@@ -72,6 +59,15 @@ public class Screw : MonoBehaviour
             HingeJoint2D joint = gameObject.AddComponent<HingeJoint2D>();
             joint.connectedBody = plates[i].GetComponent<Rigidbody2D>();
             joint.autoConfigureConnectedAnchor = true;
+        }
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Plate"))
+        {
+            SoundManager.Instance.Play(Sounds.PlateScrew);
         }
     }
 }
