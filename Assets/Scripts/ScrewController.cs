@@ -39,6 +39,7 @@ public class ScrewController : MonoBehaviour
                     {
                         selectedObject.transform.position = tappedObject2.transform.position;
                         selectedObject.GetComponent<Screw>().ChangeScrewPosition();
+                        UIController.Instance.ReduceMovesCount();
                     }
                     else
                     {
