@@ -5,6 +5,7 @@ public class LevelManager : Singleton<LevelManager>
 {
     public List<GameObject> currentPlateCount = new List<GameObject>();
     public int numberOfMoves;
+    public ParticleSystem confettiVFX;
 
     private void Start()
     {
@@ -21,6 +22,8 @@ public class LevelManager : Singleton<LevelManager>
     {
         if (currentPlateCount.Count <= 0)
         {
+            confettiVFX.Play();
+
             UIController.Instance.ActivateLevelWin();
         }
     }

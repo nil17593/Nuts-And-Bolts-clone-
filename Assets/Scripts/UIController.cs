@@ -10,7 +10,6 @@ public class UIController : Singleton<UIController>
     public GameObject levelWinPanel;
     public TextMeshProUGUI movesCountText;
     public GameObject levelLosePanel;
-    public ParticleSystem confettiVFX;
 
 
     private void Start()
@@ -21,12 +20,16 @@ public class UIController : Singleton<UIController>
 
     IEnumerator WinCoroutine()
     {
-        confettiVFX.Play();
         yield return new WaitForSeconds(2f);
         levelWinPanel.SetActive(true);
         int i = PlayerPrefs.GetInt("CurrentLevel");
         i += 1;
         PlayerPrefs.SetInt("CurrentLevel", i);
+    }
+
+    public void OnMainMenuButtonPressed()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void ActivateLevelWin()
