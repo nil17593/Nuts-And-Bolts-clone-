@@ -10,7 +10,7 @@ public class MainMenuController : MonoBehaviour
         if (!PlayerPrefs.HasKey("CurrentLevel"))
         {
             PlayerPrefs.SetInt("CurrentLevel", 1);
-            SceneManager.LoadScene(PlayerPrefs.GetInt("CurrentLevel"));
+            SceneManager.LoadScene(1);
         }
         else
         {

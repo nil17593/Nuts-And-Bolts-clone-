@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3957602512752511919}
   - component: {fileID: 3957602512752511916}
   - component: {fileID: 3957602512752511917}
+  - component: {fileID: 5019801718310804849}
   m_Layer: 0
   m_Name: ScrewHole
   m_TagString: ScrewBase
@@ -100,4 +101,18 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 0.65
+--- !u!114 &5019801718310804849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3957602512752511890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddf6a3eb2675b874daf5231e370cde0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isColliding: 0
+  canFitScrew: 0

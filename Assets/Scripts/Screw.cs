@@ -8,9 +8,11 @@ public class Screw : MonoBehaviour
     public List<HingeJoint2D> hingeJoint2s = new List<HingeJoint2D>();
     private void Start()
     {
+        transform.position = new Vector3(transform.position.x, transform.position.y, -0.01f);
+
         Collider2D[] nearbyPlates = Physics2D.OverlapCircleAll(transform.position, detectionRadius);
         List<Collider2D> plates = new List<Collider2D>();
-        foreach(Collider2D collider in nearbyPlates)
+        foreach (Collider2D collider in nearbyPlates)
         {
             if (collider.CompareTag("Plate"))
             {
@@ -20,8 +22,8 @@ public class Screw : MonoBehaviour
 
         if (plates.Count <= 0)
             return;
-        
-        for(int i = 0; i < plates.Count; i++)
+
+        for (int i = 0; i < plates.Count; i++)
         {
             HingeJoint2D joint = gameObject.AddComponent<HingeJoint2D>();
             joint.connectedBody = plates[i].GetComponent<Rigidbody2D>();
@@ -32,11 +34,11 @@ public class Screw : MonoBehaviour
     public void ChangeScrewPosition()
     {
         HingeJoint2D[] hingeJoint2D = gameObject.GetComponents<HingeJoint2D>();
-        foreach(HingeJoint2D hingeJoint2D1 in hingeJoint2D)
+        foreach (HingeJoint2D hingeJoint2D1 in hingeJoint2D)
         {
             Destroy(hingeJoint2D1);
         }
-         
+
         Collider2D[] nearbyPlates = Physics2D.OverlapCircleAll(transform.position, detectionRadius);
         List<Collider2D> plates = new List<Collider2D>();
 
@@ -71,3 +73,4 @@ public class Screw : MonoBehaviour
         }
     }
 }
+

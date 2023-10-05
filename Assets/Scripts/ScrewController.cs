@@ -27,7 +27,7 @@ public class ScrewController : MonoBehaviour
                         selectedObject = tappedObject;
                         originalPosition = tappedObject.transform.position;
                         selectedObject.GetComponent<SpriteRenderer>().enabled = false;
-                        duplicateScrew.transform.position = originalPosition+ new Vector3(0, .5f, 0);
+                        duplicateScrew.transform.position = originalPosition + new Vector3(0, .5f, 0);
                         duplicateScrew.SetActive(true);
                         //selectedObject.transform.position += new Vector3(0, .5f, 0);
                     }
@@ -41,9 +41,10 @@ public class ScrewController : MonoBehaviour
                 {
                     GameObject tappedObject2 = hit2.collider.gameObject;
 
-                    if (tappedObject2.CompareTag("ScrewBase"))
+                    ScrewHoleController screwHole = hit.collider.gameObject.GetComponent<ScrewHoleController>();
+                    if (screwHole != null && screwHole.canFitScrew)
                     {
-                        selectedObject.transform.position = tappedObject2.transform.position;
+                        selectedObject.transform.position = tappedObject2.transform.position + new Vector3(0, 0, -0.01f);
                         selectedObject.GetComponent<SpriteRenderer>().enabled = true;
                         selectedObject.GetComponent<Screw>().ChangeScrewPosition();
                         duplicateScrew.SetActive(false);
@@ -52,7 +53,7 @@ public class ScrewController : MonoBehaviour
                     else
                     {
                         selectedObject.GetComponent<SpriteRenderer>().enabled = true;
-                        selectedObject.transform.position = originalPosition;
+                        selectedObject.transform.position = originalPosition + new Vector3(0, 0, -0.01f);
                         selectedObject = null;
                         duplicateScrew.SetActive(false);
                     }
@@ -61,7 +62,7 @@ public class ScrewController : MonoBehaviour
                 else
                 {
                     selectedObject.GetComponent<SpriteRenderer>().enabled = true;
-                    selectedObject.transform.position = originalPosition;
+                    selectedObject.transform.position = originalPosition + new Vector3(0, 0, -0.01f);
                     selectedObject = null;
                     duplicateScrew.SetActive(false);
                 }
@@ -72,7 +73,7 @@ public class ScrewController : MonoBehaviour
                 if (selectedObject != null)
                 {
                     selectedObject.GetComponent<SpriteRenderer>().enabled = true;
-                    selectedObject.transform.position = originalPosition;
+                    selectedObject.transform.position = originalPosition + new Vector3(0, 0, -0.01f);
                     selectedObject = null;
                     duplicateScrew.SetActive(false);
                 }
