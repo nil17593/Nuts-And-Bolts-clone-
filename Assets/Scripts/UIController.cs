@@ -4,19 +4,48 @@ using TMPro;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 
 public class UIController : Singleton<UIController>
 {
     public GameObject levelWinPanel;
     public TextMeshProUGUI movesCountText;
     public GameObject levelLosePanel;
-
+    public Button soundOnButton;
+    public Button soundOffButton;
 
     private void Start()
     {
+        if (!PlayerPrefs.HasKey("Sound"))
+        {
+            PlayerPrefs.SetInt("Sound", 1);
+        }
+
+        bool isSoundOn = PlayerPrefs.GetInt("Sound") == 1;
+        soundOnButton.gameObject.SetActive(isSoundOn);
+        soundOffButton.gameObject.SetActive(!isSoundOn);
+        SoundManager.Instance.Mute(!isSoundOn);
+
         movesCountText.text = LevelManager.Instance.numberOfMoves.ToString();
     }
 
+
+    public void OnSoundOnButtonPressed()
+    {
+        PlayerPrefs.SetInt("Sound", 0);
+        soundOffButton.gameObject.SetActive(true);
+        soundOnButton.gameObject.SetActive(false);
+        SoundManager.Instance.Mute(true);
+
+    }
+
+    public void OnSoundOffButtonPressed()
+    {
+        PlayerPrefs.SetInt("Sound", 1);
+        soundOnButton.gameObject.SetActive(true);
+        soundOffButton.gameObject.SetActive(false);
+        SoundManager.Instance.Mute(false);
+    }
 
     IEnumerator WinCoroutine()
     {
