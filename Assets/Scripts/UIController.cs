@@ -95,9 +95,18 @@ public class UIController : Singleton<UIController>
         movesCountText.rectTransform.DOShakeScale(0.1f, 1, 10, 90).OnComplete(() => { 
         movesCountText.text = moves.ToString();
         });
-        if (LevelManager.Instance.currentPlateCount.Count > 0 && LevelManager.Instance.numberOfMoves <= 0)
+        StartCoroutine(CoroutineForLevelLose());
+    }
+
+    IEnumerator CoroutineForLevelLose()
+    {
+        yield return new WaitForSeconds(0.2f);
+        if (LevelManager.Instance.numberOfMoves <= 0)
         {
-            levelLosePanel.SetActive(true);
+            if (LevelManager.Instance.CheckForPlatesAttachedToScrews())
+            {
+                levelLosePanel.SetActive(true);
+            }
         }
     }
 }

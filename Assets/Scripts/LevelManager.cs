@@ -4,6 +4,7 @@ using UnityEngine;
 public class LevelManager : Singleton<LevelManager>
 {
     public List<GameObject> currentPlateCount = new List<GameObject>();
+    public List<Screw> currentScrews = new List<Screw>();
     public int numberOfMoves;
     public ParticleSystem confettiVFX;
 
@@ -11,12 +12,27 @@ public class LevelManager : Singleton<LevelManager>
     {
         GameObject[] currentPlates = GameObject.FindGameObjectsWithTag("Plate");
         currentPlateCount.AddRange(currentPlates);
+
+        Screw[] _currentScrews = FindObjectsOfType<Screw>();
+        currentScrews.AddRange(_currentScrews);
     }
 
     //IEnumerator CheckForLevelWinCoroutine()
     //{
 
     //}
+
+    public bool CheckForPlatesAttachedToScrews()
+    {
+        foreach(Screw screw in currentScrews)
+        {
+            if (screw.GetComponent<HingeJoint2D>() != null)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public void CheckForLevelWin()
     {
