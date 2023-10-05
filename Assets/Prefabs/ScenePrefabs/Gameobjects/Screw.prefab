@@ -136,5 +136,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea58c578bcda9d40b637629f9c7a0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 0.3
+  detectionRadius: 0.25
   hingeJoint2s: []
