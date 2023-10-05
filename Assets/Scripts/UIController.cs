@@ -1,32 +1,53 @@
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class UIController : Singleton<UIController>
 {
     public GameObject levelWinPanel;
     public TextMeshProUGUI movesCountText;
     public GameObject levelLosePanel;
+    public ParticleSystem confettiVFX;
+
 
     private void Start()
     {
         movesCountText.text = LevelManager.Instance.numberOfMoves.ToString();
     }
 
-    public void ActivateLevelWin()
+
+    IEnumerator WinCoroutine()
     {
-        //levelWinPanel.transform.DOMove(Vector3.zero, 1f);
+        confettiVFX.Play();
+        yield return new WaitForSeconds(2f);
         levelWinPanel.SetActive(true);
         int i = PlayerPrefs.GetInt("CurrentLevel");
         i += 1;
         PlayerPrefs.SetInt("CurrentLevel", i);
     }
 
+    public void ActivateLevelWin()
+    {
+        //levelWinPanel.transform.DOMove(Vector3.zero, 1f);
+        StartCoroutine(WinCoroutine());   
+    }
+
     public void OnNextLevelButtonPressed()
     {
         int i = PlayerPrefs.GetInt("CurrentLevel");
-        SceneManager.LoadScene(i);
+        Debug.Log(i);
+        if (i >= SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(1);
+            PlayerPrefs.SetInt("CurrentLevel", 1);
+        }
+        else
+        {
+            SceneManager.LoadScene(i);
+        }
     }
 
     public void OnRestartButtonClick()

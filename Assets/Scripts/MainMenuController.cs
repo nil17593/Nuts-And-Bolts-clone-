@@ -14,7 +14,15 @@ public class MainMenuController : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(PlayerPrefs.GetInt("CurrentLevel"));
+            int i = PlayerPrefs.GetInt("CurrentLevel");
+            if (i >= SceneManager.sceneCountInBuildSettings)
+            {
+                SceneManager.LoadScene(1);
+            }
+            else
+            {
+                SceneManager.LoadScene(PlayerPrefs.GetInt("CurrentLevel"));
+            }
         }
     }
     
